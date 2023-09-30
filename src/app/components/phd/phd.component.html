@@ -1,0 +1,94 @@
+<form (ngSubmit)="phdPersuingSubmit()" #currphd="ngForm">
+<div>
+  <br>
+  <div><h1>Ph.D Student Details</h1></div>
+<table class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+<tr>
+  <th colspan="4" align="center">Ph.D (Student pursuing doctoral program till {{getCurrentYear()}}-{{getCurrentYear()-1}})</th>
+</tr>
+<tr>
+  <td></td>
+  <td align="center"> Total Students</td>
+</tr>
+<tr><th>Full Time</th>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" placeholder="enter Full time numbers" [(ngModel)]="PhdPersuingStudentInput.CurrFullTimePhd" name="currFullTime" [formControl]="PhdPersuingStudentInputForm_FullTime">
+<p *ngIf="PhdPersuingStudentInputForm_FullTime && PhdPersuingStudentInputForm_FullTime.touched && PhdPersuingStudentInputForm_FullTime?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+</td>
+</tr>
+<tr><th align="center">Part Time</th>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" placeholder="enter Part time numbers" [(ngModel)]="PhdPersuingStudentInput.CurrPartTimePhd" name="currPartTime" [formControl]="PhdPersuingStudentInputForm_PartTime">
+<p *ngIf="PhdPersuingStudentInputForm_PartTime && PhdPersuingStudentInputForm_PartTime.touched && PhdPersuingStudentInputForm_PartTime?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+</tr>
+<tr><td colspan="4" align="center"><button mat-raised-button type="submit" class="text-primary">SUBMIT</button></td></tr>
+  </table>
+</div>
+
+</form>
+<br>
+<br>
+
+<form (ngSubmit)="phdCompletedSubmit()" #phdCompleted="ngForm">
+<div>
+<table class="table table-hover table-responsive table-bordered mb-lg-3">
+
+<tr>
+<th colspan="4" align="center">No. of Ph.D students graduated (including Integrated Ph.D)</th>
+</tr>
+<tr>
+<th>TYPE</th>
+<th align="center">{{getCurrentYear()}}-{{getCurrentYear()-1}}</th>
+<th align="center">{{getCurrentYear()-1}}-{{getCurrentYear()-2}} </th>
+<th align="center">{{getCurrentYear()-2}}-{{getCurrentYear()-3}} </th>
+</tr>
+<tr>
+  <th>Full Time</th>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')"  name="Ftcurr" [(ngModel)]="PhdGraduatedStudentInputFullTime.currYear_count" [formControl]="ft_PhdGraduatedStudentInputForm_currYear_Count">
+    <p *ngIf="ft_PhdGraduatedStudentInputForm_currYear_Count && ft_PhdGraduatedStudentInputForm_currYear_Count.touched && ft_PhdGraduatedStudentInputForm_currYear_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" name="Ftprev" [formControl]="ft_PhdGraduatedStudentInputForm_prevYear_Count" [(ngModel)]="PhdGraduatedStudentInputFullTime.prevYear_Count">
+    <p *ngIf="ft_PhdGraduatedStudentInputForm_prevYear_Count && ft_PhdGraduatedStudentInputForm_prevYear_Count.touched && ft_PhdGraduatedStudentInputForm_prevYear_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')"   name="Ftprev2" [formControl]="ft_PhdGraduatedStudentInputForm_prev2Year_Count" [(ngModel)]="PhdGraduatedStudentInputFullTime.prev2Year_Count">
+    <p *ngIf="ft_PhdGraduatedStudentInputForm_prev2Year_Count && ft_PhdGraduatedStudentInputForm_prev2Year_Count.touched && ft_PhdGraduatedStudentInputForm_prev2Year_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+</tr>
+<tr>
+  <th>Part Time</th>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="PhdGraduatedStudentInputPartTime.currYear_count" name="Ptcurr" [formControl]="pt_PhdGraduatedStudentInputForm_currYear_Count">
+    <p *ngIf="pt_PhdGraduatedStudentInputForm_currYear_Count && pt_PhdGraduatedStudentInputForm_currYear_Count.touched && pt_PhdGraduatedStudentInputForm_currYear_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="PhdGraduatedStudentInputPartTime.prevYear_Count"  name="Ptprev" [formControl]="pt_PhdGraduatedStudentInputForm_prevYear_Count">
+    <p *ngIf="pt_PhdGraduatedStudentInputForm_prevYear_Count && pt_PhdGraduatedStudentInputForm_prevYear_Count.touched && pt_PhdGraduatedStudentInputForm_prevYear_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+</td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="PhdGraduatedStudentInputPartTime.prev2Year_Count" name="Ptprev2" [formControl]="pt_PhdGraduatedStudentInputForm_prev2Year_Count">
+    <p *ngIf="pt_PhdGraduatedStudentInputForm_prev2Year_Count && pt_PhdGraduatedStudentInputForm_prev2Year_Count.touched && pt_PhdGraduatedStudentInputForm_prev2Year_Count?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+</td>
+</tr>
+<tr><td colspan="4" align="center"><button mat-raised-button type="submit" class="text-primary">SUBMIT</button></td></tr>
+
+</table>
+
+
+</div>
+
+
+
+
+</form>

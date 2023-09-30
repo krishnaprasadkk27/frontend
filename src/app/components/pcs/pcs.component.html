@@ -1,0 +1,34 @@
+
+<form (ngSubmit)="pcsFacilities()" #pcs="ngForm">
+<h1>PCS Facilities: Facilities of Physically Challenged Students</h1>
+<table class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+  <tr>
+    <td>1. Do your institution buildings have Lifts/Ramps?</td>
+    <td align="center:"><mat-radio-group aria-label="Select an option" [(ngModel)]="lifts" for="lifts" name="lifts" >
+      <mat-radio-button value="yes" for="liftYes">Yes</mat-radio-button>
+      <mat-radio-button value="no" for="liftNo">No</mat-radio-button>
+    </mat-radio-group></td>
+  </tr>
+  <tr>
+    <td>2. Do your institution have provision for walking aids, including wheelchairs and transportation from one building to another for
+    handicapped students?</td>
+    <td align="center:"><mat-radio-group aria-label="Select an option" [(ngModel)]="walkingAids" for="walkingAids" name="walkingAids">
+      <mat-radio-button value="yes" for="liftYes" align="center">Yes</mat-radio-button>
+      <mat-radio-button value="no" for="liftNo" align="center">No</mat-radio-button>
+    </mat-radio-group></td>
+  </tr>
+  <tr><td>3. Do your institution buildings have specially designed toilets for handicapped students?</td>
+    <td align="center:"><mat-radio-group aria-label="Select an option" [(ngModel)]="toilets" for="toilets" name="toilets"
+      >
+      <mat-radio-button value="yes" for="liftYes">Yes</mat-radio-button>
+      <mat-radio-button value="no" for="liftNo">No</mat-radio-button>
+    </mat-radio-group></td>
+</tr>
+
+</table>
+<div align="center">
+  <button mat-raised-button (onclick)="buttonPressed=true" type="submit"    #myButton > Submit</button>
+  </div>
+
+</form>
+

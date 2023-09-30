@@ -1,0 +1,166 @@
+<p>research works!</p>
+
+<form (ngSubmit)="researchSubmit()" #research="ngForm">
+<h1>Sponsored Research Details
+</h1>
+<div>
+<table   class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+<tr>
+<th>Financial Year </th>
+<th>{{ getCurrentYear()}}-{{ getCurrentYear()-1}}</th>
+<th>{{ getCurrentYear()-1}}-{{ getCurrentYear()-2}}</th>
+<th>{{ getCurrentYear()-2}}-{{ getCurrentYear()-3}}</th>
+</tr>
+<tr>
+  <td>Total no. of Sponsored Projects</td>
+  <td><input type="number"  name="researchDetails_currTotalSpProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.currTotalSpProj" placeholder="Enter Here" [formControl]="curr_TotalSpProj">
+    <p *ngIf="curr_TotalSpProj && curr_TotalSpProj.touched && curr_TotalSpProj?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number"  name="researchDetails_prevTotalSpProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prevTotalSpProj" placeholder="Enter Here" [formControl]="prev_TotalSpProj">
+    <p *ngIf="prev_TotalSpProj && prev_TotalSpProj.touched && prev_TotalSpProj?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number"  name="researchDetails_prev2TotalSpProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prev2TotalSpProj"  placeholder="Enter Here" [formControl]="prev2_TotalSpProj">
+    <p *ngIf="prev2_TotalSpProj && prev2_TotalSpProj.touched && prev2_TotalSpProj?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+</tr>
+<tr>
+  <td>Total no. of Funding Agencies</td>
+  <td><input type="number"  name="researchDetails_currTotalFundAgency" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.currTotalFundAgency"  placeholder="Enter Here" [formControl]="curr_TotalFundAgency">
+    <p *ngIf="curr_TotalFundAgency && curr_TotalFundAgency.touched && curr_TotalFundAgency?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number"  name="researchDetails_prevTotalFundAgency" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prevTotalFundAgency"  placeholder="Enter Here" [formControl]="prev_TotalFundAgency">
+    <p *ngIf="prev_TotalFundAgency && prev_TotalFundAgency.touched && prev_TotalFundAgency?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number"  name="researchDetails_prev2TotalFundAgency" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prev2TotalFundAgency" placeholder="Enter Here" [formControl]="prev2_TotalFundAgency">
+    <p *ngIf="prev2_TotalFundAgency && prev2_TotalFundAgency.touched && prev2_TotalFundAgency?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+</td>
+</tr>
+<tr>
+  <td>Total Amount Received (Amount in Rupees)</td>
+  <td><input type="number"  name="researchDetails_currTotalAmtRcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.currTotalAmtRcv"  placeholder="Enter Here" [formControl]="curr_TotalAmtRcv">
+    <p *ngIf="curr_TotalAmtRcv && curr_TotalAmtRcv.touched && curr_TotalAmtRcv?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+  <td><input type="number" name="researchDetails_prevTotalAmtRcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prevTotalAmtRcv"  placeholder="Enter Here" [formControl]="prev_TotalAmtRcv">
+    <p *ngIf="prev_TotalAmtRcv && prev_TotalAmtRcv.touched && prev_TotalAmtRcv?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+</td>
+  <td><input type="number"  name="researchDetails_prev2TotalAmtRcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prev2TotalAmtRcv"  placeholder="Enter Here" [formControl]="prev2_TotalAmtRcv">
+    <p *ngIf="prev2_TotalAmtRcv && prev2_TotalAmtRcv.touched && prev2_TotalAmtRcv?.hasError('required') " class="text-danger"
+    style="text-align: left ;">This Field cannot be Empty
+  </p>
+  </td>
+</tr>
+
+<tr>
+  <td>Amount Received in Words</td>
+  <td><input type="number"  name="researchDetails_currAmtrcv"  class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.currAmtrcv"  placeholder="Enter Here"></td>
+  <td><input type="number"  name="researchDetails_prevAmtrcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prevAmtrcv"  placeholder="Enter Here"></td>
+  <td><input type="number"  name="researchDetails_prev2Amtrcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prev2Amtrcv"  placeholder="Enter Here"></td>
+</tr>
+<tr><td colspan="4" align="center" ><button mat-raised-button  type="submit" >Submit</button></td></tr>
+</table>
+</div>
+
+
+
+</form>
+
+
+
+
+
+<form (ngSubmit)="ConsultancySubmit()" #consultancy="ngForm">
+  <h1>Consultancy Project Details
+  </h1>
+  <div>
+  <table   class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+  <tr>
+  <th>Financial Year </th>
+  <th>{{ getCurrentYear()}}-{{ getCurrentYear()-1}}</th>
+  <th>{{ getCurrentYear()-1}}-{{ getCurrentYear()-2}}</th>
+  <th>{{ getCurrentYear()-2}}-{{ getCurrentYear()-3}}</th>
+  </tr>
+  <tr>
+    <td>Total no. of Consultancy Projects</td>
+    <td><input type="number" type="number" name="currTotalConsProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.currTotalConsProj" placeholder="Enter Here" [formControl]="curr_TotalConsProj">
+      <p *ngIf="curr_TotalSpProj && curr_TotalSpProj.touched && curr_TotalSpProj?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+    <td><input type="number" type="number" name="prevTotalConsProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prevTotalConsProj" placeholder="Enter Here" [formControl]="prev_TotalConsProj">
+      <p *ngIf="prev_TotalSpProj && prev_TotalSpProj.touched && prev_TotalSpProj?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+    <td><input type="number" type="number" name="prev2TotalConsProj" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prev2TotalConsProj"  placeholder="Enter Here" [formControl]="prev2_TotalConsProj">
+      <p *ngIf="prev2_TotalSpProj && prev2_TotalSpProj.touched && prev2_TotalSpProj?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <td>Total no. of Client Organizations/td>
+    <td><input type="number" type="number" name="currTotalClientorg" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.currTotalClientorg"  placeholder="Enter Here" [formControl]="curr_TotalClientorg">
+      <p *ngIf="curr_TotalClientorg && curr_TotalClientorg.touched && curr_TotalClientorg?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+    <td><input type="number" type="number" name="prev_TotalClientorg" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prevTotalConsProj"  placeholder="Enter Here" [formControl]="prev_TotalClientorg">
+      <p *ngIf="prev_TotalClientorg && prev_TotalClientorg.touched && prev_TotalClientorg?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+    <td><input type="number" type="number" name="prev2_TotalClientorg" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prev2TotalConsProj" placeholder="Enter Here" [formControl]="prev2_TotalClientorg">
+      <p *ngIf="prev2_TotalClientorg && prev2_TotalClientorg.touched && prev2_TotalClientorg?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+  </td>
+  </tr>
+  <tr>
+    <td>Total Amount Received (Amount in Rupees)</td>
+    <td><input type="number" type="number" name="curr_TotalAmtRcvCsty" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.currTotalAmtRcv"  placeholder="Enter Here" [formControl]="curr_TotalAmtRcvCsty">
+      <p *ngIf="curr_TotalAmtRcvCsty && curr_TotalAmtRcvCsty.touched && curr_TotalAmtRcvCsty?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+    <td><input type="number" type="number" name="prev_TotalAmtCsty" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prevTotalAmtRcv"  placeholder="Enter Here" [formControl]="prev_TotalAmtCsty">
+      <p *ngIf="prev_TotalAmtCsty && prev_TotalAmtCsty.touched && prev_TotalAmtCsty?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+  </td>
+    <td><input type="number" type="number" name="prev2_TotalAmtCsty" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="ConsultancyProjectDetails.prev2TotalAmtRcv"  placeholder="Enter Here" [formControl]="prev2_TotalAmtCsty">
+      <p *ngIf="prev2_TotalAmtCsty && prev2_TotalAmtCsty.touched && prev2_TotalAmtCsty?.hasError('required') " class="text-danger"
+      style="text-align: left ;">This Field cannot be Empty
+    </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Amount Received in Words</td>
+    <td><input type="number" type="number" name="currAmtrcv"  class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.currAmtrcv"  placeholder="Enter Here"></td>
+    <td><input type="number" type="number" name="prevAmtrcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prevAmtrcv"  placeholder="Enter Here"></td>
+    <td><input type="number" type="number" name="prev2Amtrcv" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="researchDetails.prev2Amtrcv"  placeholder="Enter Here"></td>
+  </tr>
+  <tr><td colspan="4" align="center" ><button mat-raised-button class="text-primary" type="submit"  >Submit</button></td></tr>
+  </table>
+  </div>
+  <p *ngIf=""></p>
+
+
+  </form>
+

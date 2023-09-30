@@ -1,0 +1,106 @@
+
+<form (ngSubmit)="CapitalSubmit()" #capExp="ngForm">
+  <h1>Financial Resources: Utilised Amount for the Capital Expenditure for previous 3 years</h1>
+<table class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+<tr>
+  <th>Financial Year </th>
+<th>{{ getCurrentYear()}}-{{ getCurrentYear()-1}}</th>
+<th>{{ getCurrentYear()-1}}-{{ getCurrentYear()-2}}</th>
+<th>{{ getCurrentYear()-2}}-{{ getCurrentYear()-3}}</th>
+</tr>
+<tr>
+  <td></td>
+  <td align="center">Utilised Amount</td>
+  <td align="center">Utilised Amount</td>
+    <td align="center">Utilised Amount</td>
+</tr>
+<tr>
+  <td colspan="4" align="center">Annual Capital Expenditure on Academic Activities and Resources (excluding expenditure on buildings)</td>
+</tr>
+<tr><td colspan="1">Library ( Books, Journals and e-Resources only) </td>
+
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.currYearLibrary" name="CapitalExpendature_currYearLibrary"></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prevYearLibrary" name="CapitalExpendature_prevYearLibrary"></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')"[(ngModel)]="CapitalExpendature.prev2YearLibrary" name="CapitalExpendature_prev2YearLibrary"></td>
+
+</tr>
+
+
+
+<tr><td colspan="1">New Equipment and software for Laboratories</td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.currYarEqp" name="CapitalExpendature_currYarEqp"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prevYarEqp" name="CapitalExpendature_prevYarEqp"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prev2YarEqp" name="CapitalExpendature_prev2YarEqp"></td>
+  </tr>
+
+
+<tr><td colspan="1">Engineering Workshops</td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.currYearWorkshop" name="CapitalExpendature_currYearWorkshop"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prevYearWorkshop" name="CapitalExpendature_prevYearWorkshop"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prev2YearWorkshop" name="CapitalExpendature_prev2YearWorkshop"></td>
+  </tr>
+
+
+<tr><td colspan="1">Other expenditure on creation of Capital Assets (For setting up
+  classrooms, seminar hall, conference hall , library, Lab, Engg
+  workshops excluding expenditure on Land and Building)</td>
+  <td><input type="number" class="form-control form-control " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.currYearOth" name="CapitalExpendature_currYearOth"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prevYearOth" name="CapitalExpendature_prevYearOth"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="CapitalExpendature.prev2YearOth" name="CapitalExpendature_prev2YearOth"></td>
+  </tr>
+
+ <tr><td colspan="4" align="center"> <button  mat-raised-button type="submit">SUBMIT</button></td></tr>
+</table>
+
+</form>
+<br>
+<br>
+
+<form (ngSubmit)="operationlaSubmit()" #opExp="ngForm">
+  <h1>Financial Resources: Utilised Amount for the Operational Expenditure for previous 3 years</h1>
+<table class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+  <tr>
+    <th>Financial Year </th>
+  <th>{{ getCurrentYear()}}-{{ getCurrentYear()-1}}</th>
+  <th>{{ getCurrentYear()-1}}-{{ getCurrentYear()-2}}</th>
+  <th>{{ getCurrentYear()-2}}-{{ getCurrentYear()-3}}</th>
+  </tr>
+<tr>
+  <td></td>
+  <td align="center">Utilised Amount</td>
+  <td align="center">Utilised Amount</td>
+    <td align="center">Utilised Amount</td>
+</tr>
+<tr>
+  <td colspan="4" align="center">Annual Operational Expenditure</td>
+</tr>
+<tr><td colspan="1">Salaries (Teaching and Non Teaching staff)</td>
+
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.currSalary" name="operationalExpendature_currSalary" id="operationalExpendature.currSalary"></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prevSalary" name="operationalExpendature_prevSalary" id="operationalExpendature.prevSalary"></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prev2Salary" name="operationalExpendature_prev2Salary" id="operationalExpendature.prev2Salary"></td>
+
+</tr>
+
+
+
+<tr><td colspan="1">Maintenance of Academic Infrastructure or consumables and
+  other running expenditures(excluding maintenance of hostels
+  and allied services,rent of the building, depreciation cost, etc)</td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.currMaintain" name="operationalExpendature_currMaintain" id="operationalExpendature.currMaintain"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prevMaintain" name="operationalExpendature_prevMaintain" id="operationalExpendature.prevMaintain"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prev2Maintain" name="operationalExpendature_prev2Maintain" id="operationalExpendature.prev2Maintain"></td>
+  </tr>
+
+
+<tr><td colspan="1">Seminars/Conferences/Workshops</td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.currSCW" name="operationalExpendature_currSCW" id="operationalExpendature.currSCW"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prevSCW" name="operationalExpendature_currSCW" id="operationalExpendature.currSCW"></td>
+  <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="operationalExpendature.prev2SCW" name="operationalExpendature_currSCW" id="operationalExpendature.currSCW"></td>
+  </tr>
+  <tr><td align="center" colspan="4"> <button mat-raised-button type="submit">SUBMIT</button></td></tr>
+
+</table>
+
+</form>
+

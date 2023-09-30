@@ -1,0 +1,628 @@
+<div style="overflow-x:scroll; overflow: auto">
+
+  <h2>Sanctioned Approved Intake</h2>
+  <h3>(for current year)</h3>
+  <form  (ngSubmit)="intakeSubmit()" #intake="ngForm">
+<table   class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+<tr>
+<th colspan="1"><h2>UG [4 Year Program(s)]</h2></th>
+<th><h2>UG [5 Years Program(s)]</h2></th>
+<th><h2>PG [2 Year Program(s)]</h2></th>
+<th><h2>PG [3 Year Program(s)]</h2></th>
+</tr>
+<tr>
+
+</tr>
+<tr  style="border-collapse:collapse">
+  <td >
+    <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="sanctionedApprovedIntake.ug_4_years" id="ug4years" name="ug4years" >
+  </td>
+  <td colspan="1"><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')"[(ngModel)]="sanctionedApprovedIntake.ug_5_years" id="ug5years" name="ug5years" ngModel></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="sanctionedApprovedIntake.pg_2_years" id="pg2years" name="pg2years" ngModel></td>
+<td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="sanctionedApprovedIntake.pg_3_years" id="pg3years" name="pg3years" ngModel></td>
+</tr>
+<tr>
+ <button type="submit"  align="center" colspan="4" btn btn-primary  mat-raised-button style="text-align: center;">SUBMIT</button>
+</tr>
+</table>
+</form>
+</div>
+<form (ngSubmit)="submitExcel()" #excel="ngForm">
+  <h2>UPLOAD VIA EXCEL SHEET</h2>
+  <input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel" />
+
+</form>
+
+<button mat-raised-button type="submit">Upload </button>
+<br>
+<br>
+<hr>
+  <div class="title mb-3">Total Actual Student Strength (Program(s) Offered by your Institution) </div>
+  <div style="overflow-x:scroll; overflow: auto">
+    <form  (ngSubmit)="actualInput()" #actual="ngForm" >
+    <table class="table table-responsive table-hover table-bordered mb-3" cellspacing="0">
+      <thead>
+        <tr>
+          <th class="text-center headerbg align-top">(All programms of all years)</th>
+          <th class="text-center headerbg align-top">No of Male Students</th>
+          <th class="text-center headerbg align-top">No of Female Students</th>
+          <th class="text-center headerbg align-top">Total Students</th>
+          <th class="text-center headerbg align-top">Within State (Including male & female)</th>
+          <th class="text-center headerbg align-top">Outside State (Including male & female)</th>
+          <th class="text-center headerbg align-top">Outside Country (Including male & female)</th>
+          <th class="text-center headerbg align-top ">Economically Backward(Including male & female)</th>
+          <th class="text-center headerbg align-top">Socially Challenged (SC + ST + OBC male & female)</th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from the State and Central Government
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from Institutional Funds
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from Private Bodies
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students who are not received full tution fee reimbursement
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>UG [4 Years
+          Program(s)]</td>
+
+        <td>
+          <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_UG4.noOfMaleStudents"
+              name="ug4_totalStudentInput.noOfMaleStudents" id="ug4_totalStudentInput.noOfMaleStudents"
+              [formControl]="ug4_totalStudentInputForm_noOfMaleStudents">
+            <p *ngIf="ug4_totalStudentInputForm_noOfMaleStudents &&ug4_totalStudentInputForm_noOfMaleStudents.touched
+                && ug4_totalStudentInputForm_noOfMaleStudents?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+        </td>
+
+        <td>
+
+<input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_UG4.noOfFemaleStudents"
+              name="ug4_totalStudentInput.noOfFemaleStudents" id="ug4_totalStudentInput.noOfFemaleStudents"
+              [formControl]="ug4_totalStudentInputForm_noOfFemaleStudents">
+            <p *ngIf="ug4_totalStudentInputForm_noOfFemaleStudents && ug4_totalStudentInputForm_noOfFemaleStudents.touched
+                && ug4_totalStudentInputForm_noOfFemaleStudents?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+
+        </td>
+          <td>
+            {{totalStudentInput_UG4.noOfFemaleStudents+totalStudentInput_UG4.noOfMaleStudents}}
+          </td>
+
+        <td>
+          <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.withinState"
+              name="ug4_totalStudentInput.withinState" id="ug4_totalStudentInput.withinState"
+              [formControl]="ug4_totalStudentInputForm_withinState">
+            <p *ngIf="ug4_totalStudentInputForm_withinState && ug4_totalStudentInputForm_withinState.touched
+                && ug4_totalStudentInputForm_withinState?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+        </td>
+
+        <td>
+          <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.outsideState"
+              name="ug4_totalStudentInput.outsideState" id="ug4_totalStudentInput.outsideState"
+              [formControl]="ug4_totalStudentInputForm_outsideState">
+            <p *ngIf="ug4_totalStudentInputForm_outsideState && ug4_totalStudentInputForm_outsideState.touched
+                && ug4_totalStudentInputForm_outsideState?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+            </td>
+
+            <td>
+              <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.outsideCountry"
+                  name="ug4_totalStudentInput.outsideCountry" id="ug4_totalStudentInput.outsideCountry"
+                  [formControl]="ug4_totalStudentInputForm_outsideCountry">
+                <p *ngIf="ug4_totalStudentInputForm_outsideCountry && ug4_totalStudentInputForm_outsideCountry.touched
+                    && ug4_totalStudentInputForm_outsideCountry?.hasError('required') " class="text-danger"
+                  style="text-align: left ;">Field is Required
+                </p>
+                </td>
+
+                <td>
+                  <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.economicallyBackward"
+                      name="ug4_totalStudentInput.economicallyBackward" id="ug4_totalStudentInput.economicallyBackward"
+                      [formControl]="ug4_totalStudentInputForm_economicallyBackward">
+                    <p *ngIf="ug4_totalStudentInputForm_economicallyBackward && ug4_totalStudentInputForm_economicallyBackward.touched
+                        && ug4_totalStudentInputForm_economicallyBackward?.hasError('required') " class="text-danger"
+                      style="text-align: left ;">Field is Required
+                    </p>
+                    </td>
+
+                    <td>
+                      <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.sociallyChallenged"
+                          name="ug4_totalStudentInput.sociallyChallenged" id="ug4_totalStudentInput.sociallyChallenged"
+                          [formControl]="ug4_totalStudentInputForm_sociallyChallenged">
+                        <p *ngIf="ug4_totalStudentInputForm_sociallyChallenged && ug4_totalStudentInputForm_sociallyChallenged.touched
+                            && ug4_totalStudentInputForm_sociallyChallenged?.hasError('required') " class="text-danger"
+                          style="text-align: left ;">Field is Required
+                        </p>
+                        </td>
+
+
+
+                        <td>
+                          <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.recievedFeeStateAndCentralGovernment"
+                              name="ug4_totalStudentInput.recievedFeeStateAndCentralGovernment" id="ug4_totalStudentInput.recievedFeeStateAndCentralGovernment"
+                              [formControl]="ug4_totalStudentInputForm_recievedFeeStateAndCentralGovernment">
+                            <p *ngIf="ug4_totalStudentInputForm_recievedFeeStateAndCentralGovernment && ug4_totalStudentInputForm_recievedFeeStateAndCentralGovernment.touched
+                                && ug4_totalStudentInputForm_recievedFeeStateAndCentralGovernment?.hasError('required') " class="text-danger"
+                              style="text-align: left ;">Field is Required
+                            </p>
+                            </td>
+
+
+                            <td>
+                              <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.recievedFeeFromInstitutionalFunds"
+                                  name="ug4_totalStudentInput.recievedFeeFromInstitutionalFunds" id="ug4_totalStudentInput.recievedFeeFromInstitutionalFunds"
+                                  [formControl]="ug4_totalStudentInputForm_recievedFeeFromInstitutionalFunds">
+                                <p *ngIf="ug4_totalStudentInputForm_recievedFeeFromInstitutionalFunds && ug4_totalStudentInputForm_recievedFeeFromInstitutionalFunds.touched
+                                    && ug4_totalStudentInputForm_recievedFeeFromInstitutionalFunds?.hasError('required') " class="text-danger"
+                                  style="text-align: left ;">Field is Required
+                                </p>
+                                </td>
+
+                                <td>
+                                  <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.recievedFeeFromPrivateBodies"
+                                      name="ug4_totalStudentInput.recievedFeeFromPrivateBodies" id="ug4_totalStudentInput.recievedFeeFromPrivateBodies"
+                                      [formControl]="ug4_totalStudentInputForm_recievedFeeFromPrivateBodies">
+                                    <p *ngIf="ug4_totalStudentInputForm_recievedFeeFromPrivateBodies && ug4_totalStudentInputForm_recievedFeeFromPrivateBodies.touched
+                                        && ug4_totalStudentInputForm_recievedFeeFromPrivateBodies?.hasError('required') " class="text-danger"
+                                      style="text-align: left ;">Field is Required
+                                    </p>
+                                    </td>
+
+                                    <td>
+                                      <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG4.notRecievedFeeReimbursement"
+                                          name="ug4_totalStudentInput.notRecievedFeeReimbursement" id="ug4_totalStudentInput.notRecievedFeeReimbursement"
+                                          [formControl]="ug4_totalStudentInputForm_notRecievedFeeReimbursement">
+                                        <p *ngIf="ug4_totalStudentInputForm_notRecievedFeeReimbursement && ug4_totalStudentInputForm_notRecievedFeeReimbursement.touched
+                                            && ug4_totalStudentInputForm_notRecievedFeeReimbursement?.hasError('required') " class="text-danger"
+                                          style="text-align: left ;">Field is Required
+                                        </p>
+                                        </td>
+
+
+        </tr>
+
+
+
+
+        <tr>
+          <td>UG [5 Years
+            Program(s)]</td>
+
+            <td>
+              <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_UG5.noOfMaleStudents"
+                  name="ug5_totalStudentInput.noOfMaleStudents" id="ug5_totalStudentInput.noOfMaleStudents"
+                  [formControl]="ug5_totalStudentInputForm_noOfMaleStudents">
+                <p *ngIf="ug5_totalStudentInputForm_noOfMaleStudents && ug5_totalStudentInputForm_noOfMaleStudents.touched
+                    && ug5_totalStudentInputForm_noOfMaleStudents?.hasError('required') " class="text-danger"
+                  style="text-align: left ;">Field is Required
+                </p>
+            </td>
+
+            <td>
+
+              <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_UG5.noOfFemaleStudents"
+                            name="ug5_totalStudentInput.noOfFemaleStudents" id="ug5_totalStudentInput.noOfFemaleStudents"
+                            [formControl]="ug5_totalStudentInputForm_noOfFemaleStudents">
+                          <p *ngIf="ug5_totalStudentInputForm_noOfFemaleStudents && ug5_totalStudentInputForm_noOfFemaleStudents.touched
+                              && ug5_totalStudentInputForm_noOfFemaleStudents?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required
+                          </p>
+
+                      </td>
+<td>
+  {{totalStudentInput_UG5.noOfFemaleStudents+totalStudentInput_UG5.noOfMaleStudents}}
+</td>
+                      <td>
+                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.withinState"
+                            name="ug5_totalStudentInput.withinState" id="ug5_totalStudentInput.withinState"
+                            [formControl]="ug5_totalStudentInputForm_withinState">
+                          <p *ngIf="ug5_totalStudentInputForm_withinState && ug5_totalStudentInputForm_withinState.touched
+                              && ug5_totalStudentInputForm_withinState?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required
+                          </p>
+                      </td>
+
+
+                      <td>
+                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.outsideState"
+                            name="ug5_totalStudentInput.outsideState" id="ug5_totalStudentInput.outsideState"
+                            [formControl]="ug5_totalStudentInputForm_outsideState">
+                          <p *ngIf="ug5_totalStudentInputForm_outsideState && ug5_totalStudentInputForm_outsideState.touched
+                              && ug5_totalStudentInputForm_outsideState?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required outside state
+                          </p>
+                          </td>
+
+                          <td>
+                            <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.outsideCountry"
+                                name="ug5_totalStudentInput.outsideCountry" id="ug5_totalStudentInput.outsideCountry"
+                                [formControl]="ug5_totalStudentInputForm_outsideCountry">
+                              <p *ngIf="ug5_totalStudentInputForm_outsideCountry && ug5_totalStudentInputForm_outsideCountry.touched
+                                  && ug5_totalStudentInputForm_outsideCountry?.hasError('required') " class="text-danger"
+                                style="text-align: left ;">Field is Required outside state
+                              </p>
+                              </td>
+
+
+
+                              <td>
+                                <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.economicallyBackward"
+                                    name="ug5_totalStudentInput.economicallyBackward" id="ug5_totalStudentInput.economicallyBackward"
+                                    [formControl]="ug5_totalStudentInputForm_economicallyBackward">
+                                  <p *ngIf="ug5_totalStudentInputForm_economicallyBackward && ug5_totalStudentInputForm_economicallyBackward.touched
+                                      && ug5_totalStudentInputForm_economicallyBackward?.hasError('required') " class="text-danger"
+                                    style="text-align: left ;">Field is Required outside state
+                                  </p>
+                                  </td>
+
+
+                                  <td>
+                                    <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.sociallyChallenged"
+                                        name="ug5_totalStudentInput.sociallyChallenged" id="ug5_totalStudentInput.sociallyChallenged"
+                                        [formControl]="ug5_totalStudentInputForm_sociallyChallenged">
+                                      <p *ngIf="ug5_totalStudentInputForm_sociallyChallenged && ug5_totalStudentInputForm_sociallyChallenged.touched
+                                          && ug5_totalStudentInputForm_sociallyChallenged?.hasError('required') " class="text-danger"
+                                        style="text-align: left ;">Field is Required outside state
+                                      </p>
+                                      </td>
+
+
+                                      <td>
+                                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.recievedFeeStateAndCentralGovernment"
+                                            name="ug5_totalStudentInput.recievedFeeStateAndCentralGovernment" id="ug5_totalStudentInput.recievedFeeStateAndCentralGovernment"
+                                            [formControl]="ug5_totalStudentInputForm_recievedFeeStateAndCentralGovernment">
+                                          <p *ngIf="ug5_totalStudentInputForm_recievedFeeStateAndCentralGovernment && ug5_totalStudentInputForm_recievedFeeStateAndCentralGovernment.touched
+                                              && ug5_totalStudentInputForm_recievedFeeStateAndCentralGovernment?.hasError('required') " class="text-danger"
+                                            style="text-align: left ;">Field is Required outside state
+                                          </p>
+                                          </td>
+
+
+                                          <td>
+                                            <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.recievedFeeFromInstitutionalFunds"
+                                                name="ug5_totalStudentInput.recievedFeeFromInstitutionalFunds" id="ug5_totalStudentInput.recievedFeeFromInstitutionalFunds"
+                                                [formControl]="ug5_totalStudentInputForm_recievedFeeFromInstitutionalFunds">
+                                              <p *ngIf="ug5_totalStudentInputForm_recievedFeeFromInstitutionalFunds && ug5_totalStudentInputForm_recievedFeeFromInstitutionalFunds.touched
+                                                  && ug5_totalStudentInputForm_recievedFeeFromInstitutionalFunds?.hasError('required') " class="text-danger"
+                                                style="text-align: left ;">Field is Required outside state
+                                              </p>
+                                              </td>
+
+                                              <td>
+                                                <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.recievedFeeFromPrivateBodies"
+                                                    name="ug5_totalStudentInput.recievedFeeFromPrivateBodies" id="ug5_totalStudentInput.recievedFeeFromPrivateBodies"
+                                                    [formControl]="ug5_totalStudentInputForm_recievedFeeFromPrivateBodies">
+                                                  <p *ngIf="ug5_totalStudentInputForm_recievedFeeFromPrivateBodies && ug5_totalStudentInputForm_recievedFeeFromPrivateBodies.touched
+                                                      && ug5_totalStudentInputForm_recievedFeeFromPrivateBodies?.hasError('required') " class="text-danger"
+                                                    style="text-align: left ;">Field is Required outside state
+                                                  </p>
+                                                  </td>
+
+                                                  <td>
+                                                    <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_UG5.notRecievedFeeReimbursement"
+                                                        name="ug5_totalStudentInput.notRecievedFeeReimbursement" id="ug5_totalStudentInput.notRecievedFeeReimbursement"
+                                                        [formControl]="ug5_totalStudentInputForm_notRecievedFeeReimbursement">
+                                                      <p *ngIf="ug5_totalStudentInputForm_notRecievedFeeReimbursement && ug5_totalStudentInputForm_notRecievedFeeReimbursement.touched
+                                                          && ug5_totalStudentInputForm_notRecievedFeeReimbursement?.hasError('required') " class="text-danger"
+                                                        style="text-align: left ;">Field is Required outside state
+                                                      </p>
+                                                      </td>
+
+
+
+
+        </tr>
+
+        <tr>
+          <td>PG [2 Year]
+
+
+            <td>
+              <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.noOfMaleStudents"
+                  name="pg2_totalStudentInput.noOfMaleStudents" id="pg2_totalStudentInput.noOfMaleStudents"
+                  [formControl]="pg2_totalStudentInputForm_noOfMaleStudents"
+                  >
+                <p *ngIf="pg2_totalStudentInputForm_noOfMaleStudents && pg2_totalStudentInputForm_noOfMaleStudents.touched
+                    && pg2_totalStudentInputForm_noOfMaleStudents?.hasError('required') " class="text-danger"
+                  style="text-align: left ;">Field is Required
+                </p>
+            </td>
+
+            <td>
+
+              <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_PG2.noOfFemaleStudents"
+                            name="pg2_totalStudentInput.noOfFemaleStudents" id="pg2_totalStudentInput.noOfFemaleStudents"
+                            [formControl]="pg2_totalStudentInputForm_noOfFemaleStudents">
+                          <p *ngIf="pg2_totalStudentInputForm_noOfFemaleStudents && pg2_totalStudentInputForm_noOfFemaleStudents.touched
+                              && pg2_totalStudentInputForm_noOfFemaleStudents?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required
+                          </p>
+
+                      </td>
+<td>
+  {{totalStudentInput_PG2.noOfFemaleStudents+totalStudentInput_PG2.noOfMaleStudents}}
+                      <td>
+                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.withinState"
+                            name="pg2_totalStudentInput.withinState" id="pg2_totalStudentInput.withinState"
+                            [formControl]="pg2_totalStudentInputForm_withinState">
+                          <p *ngIf="pg2_totalStudentInputForm_withinState && pg2_totalStudentInputForm_withinState.touched
+                              && pg3_totalStudentInputForm_withinState?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required
+                          </p>
+                      </td>
+
+                      <td>
+                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.outsideState"
+                            name="pg2_totalStudentInput.outsideState" id="pg2_totalStudentInput.outsideState"
+                            [formControl]="pg2_totalStudentInputForm_outsideState">
+                          <p *ngIf="pg2_totalStudentInputForm_outsideState  && pg2_totalStudentInputForm_outsideState.touched
+                              && pg3_totalStudentInputForm_outsideState?.hasError('required') " class="text-danger"
+                            style="text-align: left ;">Field is Required
+                          </p>
+
+                          <td>
+                            <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.outsideCountry"
+                                name="pg2_totalStudentInput.outsideCountry" id="pg2_totalStudentInput.outsideCountry"
+                                [formControl]="pg2_totalStudentInputForm_outsideCountry">
+                              <p *ngIf="pg2_totalStudentInputForm_outsideCountry && pg2_totalStudentInputForm_outsideCountry.touched
+                                  && pg3_totalStudentInputForm_outsideCountry?.hasError('required') " class="text-danger"
+                                style="text-align: left ;">Field is Required
+                              </p>
+                              </td>
+
+
+                              <td>
+                                <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.economicallyBackward"
+                                    name="pg2_totalStudentInput.economicallyBackward" id="pg2_totalStudentInput.economicallyBackward"
+                                    [formControl]="pg2_totalStudentInputForm_economicallyBackward">
+                                  <p *ngIf="pg2_totalStudentInputForm_economicallyBackward && pg2_totalStudentInputForm_economicallyBackward.touched
+                                      && pg3_totalStudentInputForm_economicallyBackward?.hasError('required') " class="text-danger"
+                                    style="text-align: left ;">Field is Required
+                                  </p>
+                                  </td>
+
+                                  <td>
+                                    <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.sociallyChallenged"
+                                        name="pg2_totalStudentInput.sociallyChallenged" id="pg2_totalStudentInput.sociallyChallenged"
+                                        [formControl]="pg2_totalStudentInputForm_sociallyChallenged">
+                                      <p *ngIf="pg2_totalStudentInputForm_sociallyChallenged && pg2_totalStudentInputForm_sociallyChallenged.touched
+                                          && pg3_totalStudentInputForm_sociallyChallenged?.hasError('required') " class="text-danger"
+                                        style="text-align: left ;">Field is Required
+                                      </p>
+                                      </td>
+
+
+
+                                      <td>
+                                        <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.recievedFeeStateAndCentralGovernment"
+                                            name="pg2_totalStudentInput.recievedFeeStateAndCentralGovernment" id="pg2_totalStudentInput.recievedFeeStateAndCentralGovernment"
+                                            [formControl]="pg2_totalStudentInputForm_recievedFeeStateAndCentralGovernment">
+                                          <p *ngIf="pg2_totalStudentInputForm_recievedFeeStateAndCentralGovernment && pg2_totalStudentInputForm_recievedFeeStateAndCentralGovernment.touched
+                                              && pg3_totalStudentInputForm_recievedFeeStateAndCentralGovernment?.hasError('required') " class="text-danger"
+                                            style="text-align: left ;">Field is Required
+                                          </p>
+                                          </td>
+
+
+                                          <td>
+                                            <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.recievedFeeFromInstitutionalFunds"
+                                                name="pg2_totalStudentInput.recievedFeeFromInstitutionalFunds" id="pg2_totalStudentInput.recievedFeeFromInstitutionalFunds"
+                                                [formControl]="pg2_totalStudentInputForm_recievedFeeFromInstitutionalFunds">
+                                              <p *ngIf="pg2_totalStudentInputForm_recievedFeeFromInstitutionalFunds && pg2_totalStudentInputForm_recievedFeeFromInstitutionalFunds.touched
+                                                  && pg3_totalStudentInputForm_recievedFeeFromInstitutionalFunds?.hasError('required') " class="text-danger"
+                                                style="text-align: left ;">Field is Required
+                                              </p>
+                                              </td>
+
+                                              <td>
+                                                <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.recievedFeeFromPrivateBodies"
+                                                    name="pg2_totalStudentInput.recievedFeeFromPrivateBodies" id="pg2_totalStudentInput.recievedFeeFromPrivateBodies"
+                                                    [formControl]="pg2_totalStudentInputForm_recievedFeeFromPrivateBodies">
+                                                  <p *ngIf="pg2_totalStudentInputForm_recievedFeeFromPrivateBodies && pg2_totalStudentInputForm_recievedFeeFromPrivateBodies.touched
+                                                      && pg3_totalStudentInputForm_recievedFeeFromPrivateBodies?.hasError('required') " class="text-danger"
+                                                    style="text-align: left ;">Field is Required
+                                                  </p>
+                                                  </td>
+
+
+                                                  <td>
+                                                    <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG2.notRecievedFeeReimbursement"
+                                                        name="pg2_totalStudentInput.notRecievedFeeReimbursement" id="pg2_totalStudentInput.notRecievedFeeReimbursement"
+                                                        [formControl]="pg2_totalStudentInputForm_notRecievedFeeReimbursement">
+                                                      <p *ngIf="pg2_totalStudentInputForm_notRecievedFeeReimbursement && pg2_totalStudentInputForm_notRecievedFeeReimbursement.touched
+                                                          && pg3_totalStudentInputForm_notRecievedFeeReimbursement?.hasError('required') " class="text-danger"
+                                                        style="text-align: left ;">Field is Required
+                                                      </p>
+                                                      </td>
+
+
+
+
+
+        </tr>
+
+        <tr><td>PG [3 Year
+          Program(s)]</td>
+
+
+
+          <td>
+            <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.noOfMaleStudents"
+                name="pg3_totalStudentInput.noOfMaleStudents" id="pg3_totalStudentInput.noOfMaleStudents"
+                [formControl]="pg3_totalStudentInputForm_noOfMaleStudents">
+              <p *ngIf="pg3_totalStudentInputForm_noOfMaleStudents && pg3_totalStudentInputForm_noOfMaleStudents.touched
+                  && pg3_totalStudentInputForm_noOfMaleStudents?.hasError('required') " class="text-danger"
+                style="text-align: left ;">Field is Required no of male students
+                </td>
+
+          <td>
+
+            <input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" [(ngModel)]="totalStudentInput_PG3.noOfFemaleStudents"
+                          name="pg3_totalStudentInput.noOfFemaleStudents" id="pg3_totalStudentInput.noOfFemaleStudents"
+                          [formControl]="pg3_totalStudentInputForm_noOfFemaleStudents">
+                        <p *ngIf="pg3_totalStudentInputForm_noOfFemaleStudents && pg3_totalStudentInputForm_noOfFemaleStudents.touched
+                            && pg3_totalStudentInputForm_noOfFemaleStudents?.hasError('required') " class="text-danger"
+                          style="text-align: left ;">Field is Required female
+                        </p>
+
+          </td>
+          <td>{{totalStudentInput_PG3.noOfFemaleStudents+totalStudentInput_PG3.noOfMaleStudents}}</td>
+                    <td>
+                      <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.withinState"
+                          name="pg3_totalStudentInput.withinState" id="pg3_totalStudentInput.withinState"
+                          [formControl]="pg3_totalStudentInputForm_withinState">
+                        <p *ngIf="pg3_totalStudentInputForm_withinState && pg3_totalStudentInputForm_withinState.touched
+                            && pg3_totalStudentInputForm_withinState?.hasError('required') " class="text-danger"
+                          style="text-align: left ;">Field is Required within state
+                        </p>
+                    </td>
+
+
+                    <td>
+                      <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.outsideState"
+                          name="pg3_totalStudentInput.outsideState" id="pg3_totalStudentInput.outsideState"
+                          [formControl]="pg3_totalStudentInputForm_outsideState">
+                        <p *ngIf="pg3_totalStudentInputForm_outsideState  && pg3_totalStudentInputForm_outsideState.touched
+                            && pg3_totalStudentInputForm_outsideState?.hasError('required') " class="text-danger"
+                          style="text-align: left ;">Field is Required within state
+                        </p>
+                        </td>
+                        <td>
+                          <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.outsideCountry"
+                              name="pg3_totalStudentInput.outsideCountry" id="pg3_totalStudentInput.outsideCountry"
+                              [formControl]="pg3_totalStudentInputForm_outsideCountry">
+                            <p *ngIf="pg3_totalStudentInputForm_outsideCountry  && pg3_totalStudentInputForm_outsideCountry.touched
+                                && pg3_totalStudentInputForm_outsideCountry?.hasError('required') " class="text-danger"
+                              style="text-align: left ;">Field is Required within
+                            </p>
+                          </td>
+
+                            <td>
+                              <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.economicallyBackward"
+                                  name="pg3_totalStudentInput.economicallyBackward" id="pg3_totalStudentInput.economicallyBackward"
+                                  [formControl]="pg3_totalStudentInputForm_economicallyBackward">
+                                <p *ngIf="pg3_totalStudentInputForm_economicallyBackward  && pg3_totalStudentInputForm_economicallyBackward.touched
+                                    && pg3_totalStudentInputForm_economicallyBackward?.hasError('required') " class="text-danger"
+                                  style="text-align: left ;">Field is Required within
+                                </p>
+                                </td>
+
+
+
+                                <td>
+                                  <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.sociallyChallenged"
+                                      name="pg3_totalStudentInput.sociallyChallenged" id="pg3_totalStudentInput.sociallyChallenged"
+                                      [formControl]="pg3_totalStudentInputForm_sociallyChallenged">
+                                    <p *ngIf="pg3_totalStudentInputForm_sociallyChallenged && pg3_totalStudentInputForm_sociallyChallenged.touched
+                                        && pg3_totalStudentInputForm_sociallyChallenged?.hasError('required') " class="text-danger"
+                                      style="text-align: left ;">Field is Required within stateououtsideCountry
+                                    </p>
+                                    </td>
+
+
+
+                                    <td>
+                                      <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.recievedFeeStateAndCentralGovernment"
+                                          name="pg3_totalStudentInput.recievedFeeStateAndCentralGovernment" id="pg3_totalStudentInput.recievedFeeStateAndCentralGovernment"
+                                          [formControl]="pg3_totalStudentInputForm_recievedFeeStateAndCentralGovernment">
+                                        <p *ngIf="pg3_totalStudentInputForm_recievedFeeStateAndCentralGovernment && pg3_totalStudentInputForm_recievedFeeStateAndCentralGovernment.touched
+                                            && pg3_totalStudentInputForm_recievedFeeStateAndCentralGovernment?.hasError('required') " class="text-danger"
+                                          style="text-align: left ;">Field is Required within stateououtsideCountry
+                                        </p>
+                                        </td>
+
+
+                                        <td>
+                                          <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.recievedFeeFromInstitutionalFunds"
+                                              name="pg3_totalStudentInput.recievedFeeFromInstitutionalFunds" id="pg3_totalStudentInput.recievedFeeFromInstitutionalFunds"
+                                              [formControl]="pg3_totalStudentInputForm_recievedFeeFromInstitutionalFunds">
+                                            <p *ngIf="pg3_totalStudentInputForm_recievedFeeFromInstitutionalFunds && pg3_totalStudentInputForm_recievedFeeFromInstitutionalFunds.touched
+                                                && pg3_totalStudentInputForm_recievedFeeFromInstitutionalFunds?.hasError('required') " class="text-danger"
+                                              style="text-align: left ;">Field is Required within stateououtsideCountry
+                                    recievedFeeFromInstitutionalFunds
+                                  </td>
+
+                                            <td>
+                                              <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.recievedFeeFromPrivateBodies"
+                                                  name="pg3_totalStudentInput.recievedFeeFromPrivateBodies" id="pg3_totalStudentInput.recievedFeeFromPrivateBodies"
+                                                  [formControl]="pg3_totalStudentInputForm_recievedFeeFromPrivateBodies">
+                                                <p *ngIf="pg3_totalStudentInputForm_recievedFeeFromPrivateBodies && pg3_totalStudentInputForm_recievedFeeFromPrivateBodies.touched
+                                                    && pg3_totalStudentInputForm_recievedFeeFromPrivateBodies?.hasError('required') " class="text-danger"
+                                                  style="text-align: left ;">Field is Required within stateououtsideCountry
+                                                </p>
+                                                </td>
+
+
+                                                <td>
+                                                  <input type="number" min="0" oninput="validity.valid || (value='')" class="form-control form-control-sm " [(ngModel)]="totalStudentInput_PG3.notRecievedFeeReimbursement"
+                                                      name="pg3_totalStudentInput.notRecievedFeeReimbursement" id="pg3_totalStudentInput.notRecievedFeeReimbursement"
+                                                      [formControl]="pg3_totalStudentInputForm_notRecievedFeeReimbursement">
+                                                    <p *ngIf="pg3_totalStudentInputForm_notRecievedFeeReimbursement && pg3_totalStudentInputForm_notRecievedFeeReimbursement.touched
+                                                        && pg3_totalStudentInputForm_notRecievedFeeReimbursement?.hasError('required') " class="text-danger"
+                                                      style="text-align: left ;">Field is Required within stateououtsideCountry
+                                                    </td>
+
+
+
+
+
+
+        </tr>
+
+
+
+
+
+      </tbody>
+</table>
+<button mat-raised-button type="submit">Submit</button>
+    </form>
+
+  </div>
+
+  <h2>UPLOAD VIA EXCEL SHEET</h2>
+<input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel" />
+<button mat-raised-button type="submit">Upload </button>
+
+<br>
+<hr>
+<br>
+    <div class="container">
+
+      <form (ngSubmit)="facultySubmit()" #totalFaculty="ngForm">
+        <h1>Faculty Details</h1>
+        <table>
+
+          <tr>
+            <th>Number of faculty members entered</th>
+            <td><input type="number" class="form-control form-control-sm " min="0" oninput="validity.valid || (value='')" name="totalF" id="totalF"[(ngModel)]="Faculty.totalFaculty"></td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-raised-button  type="submit">Save</button>
+            </td>
+          </tr>
+        </table>
+
+
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
